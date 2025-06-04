@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポートフォリオ | 大鳥　迅</title>
+    <style>
+        :root{
+            --scroll-bg: linear-gradient(to bottom, #e0f6fe 0%, #add8e6 50%, #0077be 100%);}
+        body{
+            margin: 0;
+            background: var(--scroll-bg);
+            background-attachment: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 2rem;
+            color: #2f2739;
+        }
+        header{
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        h1{
+            color: rgb(41, 65, 220);
+        }
+        
+        section{
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            background: #e0f6fe;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        a{
+            color: #0077be;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        section + section {
+            margin-top: 2rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.show{
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>大鳥　迅のポートフォリオ</h1>
+        <p>はじめまして。大鳥　迅（おおとり　じん）です。</p>
+        <p>フロントエンドを中心に学習中のWeb開発者です。</p>
+    </header>
+    
+    <section class="fade-in hidden">
+        <h2>自己紹介</h2>
+        <p>文系卒の未経験ですが、日々学習士しながら実践的なスキルを身に着けています。現在基本情報技術者の取得に向けて勉強中です。今後はUI/UXデザインやJavaScriptの理解を深めていきたいです。</p>
+    </section>
+
+    <section class="fade-in hidden">
+        <h2>趣味</h2>
+        <p>ダンス、サッカー、スマホゲーム</p>
+    </section>
+
+    <section class="fade-in hidden">
+        <h2>スキル</h2>
+        <ul>
+            <li>HTML/CSS（勉強中）</li>
+            <li>JavaScript（勉強中）</li>
+            <li>レスポンシブデザイン（勉強中）</li>
+            <li>基本情報技術者（勉強中）</li>
+        </ul>
+    </section>
+
+    <section class="fade-in hidden">
+        <h2>お問い合わせ</h2>
+        <p>質問やお仕事の依頼はこちらからどうぞ。</p>
+        <p><a href="mailto:otori.jin1905@gmail.com">otori.jin1905@gmail.com</a></p>
+    </section>
+    
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting){
+                    entry.target.classList.add('show');
+                    entry.target.classList.remove('hidden');
+                }else{entry.target.classList.remove('show');
+                    entry.target.classList.add('hidden');   
+                }
+            });
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    </script>
+</body>
+</html>
